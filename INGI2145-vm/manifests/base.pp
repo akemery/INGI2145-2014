@@ -199,7 +199,7 @@ package { "maven2":
    require => Package["default-jdk"],
 }
 
-package { "python-pip":
+package { "python3-pip":
    ensure => present,
 }
 
