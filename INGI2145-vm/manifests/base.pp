@@ -1,7 +1,7 @@
 #--Global Execution params----
 
 Exec {
-          path => "/usr/bin:/usr/sbin:/bin:/usr/local/bin:/usr/local/sbin:/sbin:/bin/sh",
+          path => "/usr/bin:/usr/sbin:/bin:/usr/local/bin:/usr/local/sbin:/sbin:/bin/sh:/opt",
           user => root,
 		  #logoutput => true,
 }
@@ -154,7 +154,7 @@ exec {"disable ipv6":
 #--Hadoop Installation-----------
  
 exec { "install hadoop":
-    command => "wget http://archive.apache.org/dist/hadoop/core/hadoop-2.4.0/hadoop-2.4.0.tar.gz && tar -xzf hadoop-2.4.0.tar.gz && mv hadoop-2.4.0/ /usr/local && cd /usr/local && ln -s hadoop-2.4.0/ hadoop",
+    command => "wget https://archive.apache.org/dist/hadoop/core/hadoop-3.2.2/hadoop-3.2.2-site.tar.gz && tar -xzf hadoop-3.2.2-site.tar.gz && mv hadoop-3.2.2-site/ /usr/local && cd /usr/local && ln -s hadoop-3.2.2-site/ hadoop",
 	#command => "wget http://blog.woopi.org/wordpress/files/hadoop-2.4.0-64bit.tar.gz && tar -xzf hadoop-2.4.0-64bit.tar.gz && mv hadoop-2.4.0/ /usr/local && cd /usr/local && ln -s hadoop-2.4.0/ hadoop",
     creates => "/usr/local/hadoop",
     require => Package["default-jdk"],
@@ -163,14 +163,14 @@ exec { "install hadoop":
 #--Kafka Installation------------
 
 exec { "install kafka":
-    command => "wget http://apache.cu.be/kafka/0.8.1.1/kafka_2.8.0-0.8.1.1.tgz && tar -xzf kafka_2.8.0-0.8.1.1.tgz && mv kafka_2.8.0-0.8.1.1/ /usr/local && cd /usr/local && ln -s kafka_2.8.0-0.8.1.1/ kafka",
+    command => "wget https://downloads.apache.org/kafka/2.8.0/kafka_2.13-2.8.0.tgz && tar -xzf kafka_2.13-2.8.0.tgz && mv kafka_2.13-2.8.0/ /usr/local && cd /usr/local && ln -s kafka_2.13-2.8.0/ kafka",
     creates => "/usr/local/kafka",
 }
 
 #--Apache Spark Installation-----
 
 exec { "install spark":
-    command => "wget http://d3kbcqa49mib13.cloudfront.net/spark-1.1.0-bin-hadoop2.4.tgz && tar -xzf spark-1.1.0-bin-hadoop2.4.tgz && mv spark-1.1.0-bin-hadoop2.4/ /usr/local && cd /usr/local && ln -s spark-1.1.0-bin-hadoop2.4/ spark",
+    command => "wget https://archive.apache.org/dist/spark/spark-3.1.2/spark-3.1.2-bin-hadoop3.2.tgz && tar -xzf spark-3.1.2-bin-hadoop3.2.tgz && mv spark-3.1.2-bin-hadoop3.2/ /usr/local && cd /usr/local && ln -s spark-3.1.2-bin-hadoop3.2/ spark",
     creates => "/usr/local/spark",
 }
 
